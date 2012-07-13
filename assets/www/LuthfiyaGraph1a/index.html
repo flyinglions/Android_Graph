@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Expenses per Category</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../theme/Wikus/WikusTheme.css" />
+        <link rel="stylesheet" href="../theme/Wikus/jquery.mobile.structure-1.1.0.min.css" />
+        <script src="../theme/Wikus/jquery-1.7.1.min.js"></script>
+        <script src="../theme/Wikus/jquery.mobile-1.1.0.min.js"></script>
+        <link class="include" rel="stylesheet" type="text/css" href="../report/jquery.jqplot.min.css" />
+        <link rel="stylesheet" type="text/css" href="../report/examples.min.css" />
+        <link type="text/css" rel="stylesheet" href="../report/syntaxhighlighter/styles/shCoreDefault.min.css" />
+        <link type="text/css" rel="stylesheet" href="../report/syntaxhighlighter/styles/shThemejqPlot.min.css" />
+        <script class="include" type="text/javascript" src="../report/jquery.min.js"></script>
+        <link type="text/css" href="../css/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+        <script type="text/javascript" src="../javascript/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../javascript/jquery-ui-1.8.20.custom.min.js"></script>
+        
+        <!-- Data start here .... -->
+        <script type="text/javascript">
+            /*var Gategories = ["Food", "Clothing", "Health", "Travel", "Entertainment", "Financial", "Services", "Living Expenses"];
+            var Spent = [2350,650,200,1800,520,450,2500,3620];
+            var Budgeted = [4000,1500,1000,3000,1000,1000,3000,5000];*/
+            
+            var Gategories = ["Food", "Clothing", "Health", "Travel"];
+            var Spent = [2350,650,200,1800];
+            var Budgeted = [4000,1500,1000,3000];
+            
+        </script>
+        <!-- Date End here ... -->
+        <script class="code" type="text/javascript">
+          $(document).ready(function () {            
+            plot1 = $.jqplot("chart", [Spent,Budgeted], {
+              title: 'Expenses per Category',
+              animate: true,
+              animateReplot: true,
+              cursor: {
+                show: true,
+                zoom: true,
+                looseZoom: true,
+                showTooltip: false
+              },
+              series:[
+                {
+                  label:'Spent',
+                  color: '#FF0000',
+                  renderer:$.jqplot.BarRenderer,
+                  rendererOptions: {
+                    animation: {
+                      speed: 2000
+                    }
+                  }
+                },
+                {
+                  label:'Budgeted',
+                  color: '#00AA00',
+                  renderer:$.jqplot.BarRenderer,
+                  rendererOptions: {
+                    animation: {
+                      speed: 2000
+                    }
+                  }  
+                }
+              ],
+              axesDefaults: {
+                pad: 1.2
+              },
+              axes: {
+                xaxis: {
+                  label: "Month",
+                  renderer: $.jqplot.CategoryAxisRenderer,
+                  labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                  tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                  ticks: Gategories,
+                  tickOptions: {
+                    angle: 90
+                  }
+                },
+                yaxis: {
+                  label: "Cash Amount",
+                  min: 0,
+                  tickOptions: {
+                    formatString: "R%'d"
+                  },
+                  rendererOptions: {
+                    forceTickAt0: true
+                  }
+                },
+                y2axis: {
+                  tickOptions: {
+                    formatString: "R%'d"
+                  },
+                  rendererOptions: {
+                    alignTicks: true,
+                    forceTickAt0: true
+                  }
+                }
+              },
+              highlighter: {
+                show: true,
+                showLabel: true,
+                tooltipAxes: 'y',
+                sizeAdjust: 2 , tooltipLocation : 'ne'
+              },
+              legend: {
+                show: true,
+                //location: 'sw',
+                placement: 'outside'
+              },
+              seriesDefaults: {
+                rendererOptions: {
+                   barWidth: 10 
+                }
+              }
+            });
+            
+          });
+        </script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("table.jqplot-table-legend").attr({ 
+                    style: "left: 0px; top: 220px; "
+                });
+            });
+        </script>
+        
+        <!-- Don't touch this! -->
+        
+        
+        <script class="include" type="text/javascript" src="../report/jquery.jqplot.min.js"></script>
+        <script type="text/javascript" src="../report/syntaxhighlighter/scripts/shCore.min.js"></script>
+        <script type="text/javascript" src="../report/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
+        <script type="text/javascript" src="../report/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+        <script type="text/javascript" src="../report/plugins/jqplot.logAxisRenderer.min.js"></script>
+        <script type="text/javascript" src="../report/plugins/jqplot.canvasTextRenderer.min.js"></script>
+        <script type="text/javascript" src="../report/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+        <script type="text/javascript" src="../report/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+        <!-- Additional plugins go here -->
+        
+        <script class="include" type="text/javascript" src="../report/plugins/jqplot.barRenderer.min.js"></script>
+        <script type="text/javascript" src="../report/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+        <script class="include" type="text/javascript" src="../report/plugins/jqplot.highlighter.min.js"></script>
+        <script class="include" type="text/javascript" src="../report/plugins/jqplot.cursor.min.js"></script>
+        <script class="include" type="text/javascript" src="../report/plugins/jqplot.pointLabels.min.js"></script>
+        
+        <!-- End additional plugins -->
+    </head>
+    <body>
+        <div data-role="page" data-theme="a">
+            <div data-role="header" data-position="inline">
+                <h1>Expenses per Category</h1>
+            </div>
+            <div data-role="content" data-theme="a">
+                <h3>Luthfiya ABSA Account : TJK 4857</h3>
+                <div id="chart" style="height:300px; width:300px;"></div>
+            </div>
+    </div>
+        
+    </body>
+</html>

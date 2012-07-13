@@ -1,15 +1,86 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
-    <!--<meta charset="utf-8">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Report</title>
-    <link rel="stylesheet" href="../theme/Wikus/WikusTheme.css" />
-    <link rel="stylesheet" href="../theme/Wikus/jquery.mobile.structure-1.1.0.min.css" />
-    <script src="../theme/Wikus/jquery-1.7.1.min.js"></script>
-    <script src="../theme/Wikus/jquery.mobile-1.1.0.min.js"></script>
-  </head>
-  <body>
-      <a href="./Graph1/index.html">Budget</a><br />
-  </body>
+        <title>
+            List of all the Graphs
+        </title>
+        <link rel="stylesheet" href="./theme/Wikus/WikusTheme.css" />
+        <link rel="stylesheet" href="./theme/Wikus/jquery.mobile.structure-1.1.0.min.css" />
+        <script src="./theme/Wikus/jquery-1.7.1.min.js"></script>
+        <script src="./theme/Wikus/jquery.mobile-1.1.0.min.js"></script>
+        <!--<style>
+            input.button
+            {
+                background:#25A6E1;
+                background:-moz-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
+                background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#25A6E1),color-stop(100%,#188BC0));
+                background:-webkit-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
+                background:-o-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
+                background:-ms-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
+                background:linear-gradient(top,#25A6E1 0%,#188BC0 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#25A6E1',endColorstr='#188BC0',GradientType=0);
+                padding:15px 10px 10px 10px;
+                color:#fff;
+                font-family:'Helvetica Neue',sans-serif;
+                font-size:17px;
+                border-radius:4px;
+                -moz-border-radius:4px;
+                -webkit-border-radius:4px;
+                border:1px solid #1A87B9;
+                width: 300px;
+                height: 60px;
+            }
+        </style>-->
+        <script type="text/javascript">
+            function redirect(val)
+            {
+                window.location = val + '/index.html';
+            }
+        </script>
+        <script class="code" type="text/javascript">
+
+        function startLoading(val)
+        {
+            $('div#loading').show();
+            var wait = ((Math.random()*3)+1)*1000;
+            var t = setTimeout("redirect('"+val+"')",wait);
+        }
+
+        function stopLoading()
+        {
+            $('div#loading').hide();
+        }
+
+        //startLoading();
+
+        $(document).ready(function()
+        {
+            stopLoading();
+        });
+
+        </script>
+    </head>
+    <body>
+        <div id="loader" data-role="page" data-theme="a">
+            <div data-role="header" data-position="inline">
+                <h1>Mobile Expenditure Manager</h1>
+            </div>
+            <div data-role="content" data-theme="a">
+                <input class="button" type="button" value="Budget" onclick="startLoading('Graph2');"/><br />
+                <input class="button" type="button" value="Expenses" onclick="startLoading('Graph3');"/><br />
+                <input class="button" type="button" value="Budget and Expenses" onclick="startLoading('Graph1');"/><br />
+                <input class="button" type="button" value="Overview of Cashflow" onclick="startLoading('PetrusGraph1');"/><br />
+                <input class="button" type="button" value="Expenses per Category" onclick="startLoading('LuthfiyaGraph1a');"/><br />
+                <div id="loading" style="display: inline" class="ui-loader ui-corner-all ui-body-a ui-loader-verbose">
+                <span class="ui-icon ui-icon-loading"></span>
+                <h1>Loading...</h1>
+                </div>
+            </div>
+        </div>
+        <!--<a href="Graph2/index.html">Budget</a><br />
+        <a href="Graph3/index.html">Expenses</a><br />
+        <a href="Graph1/index.html">Budget and Expenses</a><br />
+        <a href="PetrusGraph1/index.html">Overview of Cashflow</a><br />
+        <a href="LuthfiyaGraph1a/index.html">Expenses per Category</a><br />-->
+    </body>
 </html>
